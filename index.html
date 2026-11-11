@@ -91,6 +91,20 @@
         .reel-copy p { color: var(--text-muted); font-size: .8rem; line-height: 1.7; margin: 0 0 1rem; }
         .reel-link { display: inline-block; color: var(--accent); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; border-bottom: 1px solid var(--accent); padding-bottom: .25rem; }
 
+        .wide-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem; margin-bottom: 1.4rem; }
+        .reel-media.wide { aspect-ratio: 16/9; max-height: none; }
+        .reel-media.profile { aspect-ratio: 4/5; max-height: none; background: #fff; }
+        .trust { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem; border: 1px solid var(--accent); background: var(--surface); padding: 1.75rem 2rem; margin-top: 2.5rem; }
+        .trust h3 { font-size: 1.5rem; font-weight: 700; margin: 0 0 0.4rem; }
+        .trust p { color: var(--text-muted); margin: 0; max-width: 60ch; font-size: 0.92rem; }
+        .trust-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+        .btn-upwork { background: #14a800; border-color: #14a800; color: #fff; }
+        .btn-upwork:hover { background: #17c200; border-color: #17c200; }
+        .style-band { border-left: 3px solid var(--accent); background: rgba(231,168,62,0.07); padding: 1.5rem 1.75rem; margin-bottom: 2.5rem; }
+        .style-band h3 { font-size: 1.6rem; font-weight: 700; margin: 0 0 0.5rem; }
+        .style-band p { color: var(--text-muted); margin: 0; max-width: 75ch; }
+        .hero-trust { font-size: 0.8rem; margin: 0.6rem 0 0; }
+        .hero-trust a { color: var(--text-main); border-bottom: 1px solid #14a800; }
         .price-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.2rem; }
         .price-card { border: 1px solid var(--border); background: var(--surface); padding: 1.6rem; display: flex; flex-direction: column; }
         .price-card.main { border-color: var(--accent); }
@@ -134,6 +148,8 @@
             .hero-actions .btn-hero { width: 100%; }
             .grid-3, .price-notes { grid-template-columns: 1fr; }
             .reels-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .wide-grid { grid-template-columns: 1fr; }
+            .trust { flex-direction: column; align-items: flex-start; }
             section.block { padding: 4rem 0; }
             .footer-inner { flex-direction: column; text-align: center; }
         }
@@ -169,6 +185,7 @@
                     <a href="#pricing" class="btn">See pricing</a>
                 </div>
                 <p class="hero-note">No account needed · $8 per short-form edit · 1-day turnaround</p>
+                <p class="hero-trust"><a href="https://www.upwork.com/freelancers/~015fe2fc26d880e899?mp_source=share" target="_blank" rel="noopener noreferrer">See our client reviews on Upwork ↗</a></p>
             </div>
             <div>
                 <div class="video-frame">
@@ -208,19 +225,34 @@
             <div class="wrap">
                 <div class="section-head">
                     <p class="meta">[ Selected work ]</p>
-                    <h2>Recent edits.<br><span class="accent">Real clients.</span></h2>
-                    <p class="intro">Short-form, promo and motion work for educators, hospitality brands and businesses.</p>
+                    <h2>Any style.<br><span class="accent">Edited for your brand.</span></h2>
+                    <p class="intro">Podcasts, faceless YouTube videos, event reels, Instagram content and animation. Here is a sample of each.</p>
+                </div>
+                <div class="style-band">
+                    <h3>Seen a video you love? We can match it.</h3>
+                    <p>Send us any video as a reference and we will edit yours in that style: the pacing, captions, transitions and graphics, rebuilt in your brand's colors, fonts and tone. There is a place for reference links in the upload form.</p>
+                </div>
+                <div class="wide-grid">
+                    <article class="reel-card"><div class="reel-media wide"><iframe loading="lazy" src="https://www.youtube.com/embed/uzhXwc33WxM?rel=0&amp;modestbranding=1" title="Podcast edit sample: Parenthood Rewritten" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe></div><div class="reel-copy"><span class="reel-kicker">Podcast / YouTube</span><h3>Podcast episode edits</h3><p>Full video-podcast episodes for the Parenthood Rewritten channel: multi-camera cuts, titles, captions and clean audio.</p><a class="reel-link" href="https://www.youtube.com/@Parenthoodrewritten/videos" target="_blank" rel="noopener">See the channel ↗</a></div></article>
+                    <article class="reel-card"><div class="reel-media wide"><iframe loading="lazy" src="https://www.youtube.com/embed/wj6oTOfvP9w?rel=0&amp;modestbranding=1" title="Faceless YouTube video sample" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe></div><div class="reel-copy"><span class="reel-kicker">Faceless YouTube</span><h3>Faceless channel videos</h3><p>Voiceover-led YouTube videos built from stock, graphics and motion design, with no one on camera.</p><a class="reel-link" href="https://www.youtube.com/watch?v=wj6oTOfvP9w" target="_blank" rel="noopener">Watch on YouTube ↗</a></div></article>
                 </div>
                 <div class="reels-grid">
-<article class="reel-card"><div class="reel-media"><iframe loading="lazy" src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F29577794901813049&amp;show_text=0&amp;width=500" title="Dr. Tarindu Facebook Reel 01" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe></div><div class="reel-copy"><span class="reel-kicker">Dr. Tarindu / Facebook Reel</span><h3>Expert-led Social Reel 01</h3><p>Short-form professional content shaped with clear pacing, engaging storytelling and a social-first edit.</p><a class="reel-link" href="https://www.facebook.com/reel/29577794901813049" target="_blank" rel="noopener">Open Facebook Reel ↗</a></div></article>
-<article class="reel-card"><div class="reel-media"><iframe loading="lazy" src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F948878071622062&amp;show_text=0&amp;width=500" title="Dr. Tarindu Facebook Reel 02" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe></div><div class="reel-copy"><span class="reel-kicker">Dr. Tarindu / Facebook Reel</span><h3>Expert-led Social Reel 02</h3><p>A second short-form example highlighting concise messaging, audience engagement and platform-ready presentation.</p><a class="reel-link" href="https://www.facebook.com/reel/948878071622062" target="_blank" rel="noopener">Open Facebook Reel ↗</a></div></article>
-<article class="reel-card"><div class="reel-media"><iframe loading="lazy" src="https://www.tiktok.com/player/v1/7704904885342407956?music_info=1&amp;description=1" title="Dr. Dileepa Educational TikTok Reel" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div><div class="reel-copy"><span class="reel-kicker">Dr. Dileepa / TikTok</span><h3>Expert-led Educational Reel</h3><p>Educational short-form content featuring an expert-led presentation, edited for clarity, attention and mobile viewing.</p><a class="reel-link" href="https://www.tiktok.com/@prof.dr.dileepa/video/7704904885342407956" target="_blank" rel="noopener">Open TikTok Video ↗</a></div></article>
-<article class="reel-card"><div class="reel-media"><iframe loading="lazy" src="https://player.vimeo.com/video/1245677472?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" title="Cafe and Restaurant Promotional Video" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div><div class="reel-copy"><span class="reel-kicker">Hospitality / Promotional Editing</span><h3>Café & Restaurant Promo</h3><p>Food, ambience and venue storytelling designed to make cafés and restaurants stand out on social media.</p><a class="reel-link" href="https://vimeo.com/1245677472" target="_blank" rel="noopener">Watch on Vimeo ↗</a></div></article>
-<article class="reel-card"><div class="reel-media"><iframe loading="lazy" src="https://player.vimeo.com/video/1245677958?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" title="Economics Unit 4 Seminar Promotion" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div><div class="reel-copy"><span class="reel-kicker">Education / Event Marketing</span><h3>Economics Seminar Promo</h3><p>A vertical promotional edit for an Economics Unit 4 seminar, built to communicate the event and encourage registrations.</p><a class="reel-link" href="https://vimeo.com/1245677958" target="_blank" rel="noopener">Watch on Vimeo ↗</a></div></article>
-<article class="reel-card"><div class="reel-media"><iframe loading="lazy" src="https://player.vimeo.com/video/1245678155?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" title="ChatBiz Logo Reveal" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div><div class="reel-copy"><span class="reel-kicker">Motion Graphics / Brand Identity</span><h3>ChatBiz Logo Reveal</h3><p>A polished logo reveal animation designed to introduce a brand with a clean, memorable visual identity.</p><a class="reel-link" href="https://vimeo.com/1245678155" target="_blank" rel="noopener">Watch on Vimeo ↗</a></div></article>
+                    <article class="reel-card"><div class="reel-media profile"><iframe loading="lazy" src="https://www.instagram.com/arrambam__/embed/" title="Event reels sample: Arrambam on Instagram" scrolling="no" allowtransparency="true"></iframe></div><div class="reel-copy"><span class="reel-kicker">Events / Reels</span><h3>Event reels</h3><p>Highlight reels cut from event footage, paced to music for Instagram.</p><a class="reel-link" href="https://www.instagram.com/arrambam__/reels/" target="_blank" rel="noopener">See the reels ↗</a></div></article>
+                    <article class="reel-card"><div class="reel-media profile"><iframe loading="lazy" src="https://www.instagram.com/parenthoodrewritten/embed/" title="Instagram content sample: Parenthood Rewritten" scrolling="no" allowtransparency="true"></iframe></div><div class="reel-copy"><span class="reel-kicker">Instagram</span><h3>Instagram content</h3><p>Short clips and reels cut from long-form episodes, captioned and sized for the feed.</p><a class="reel-link" href="https://www.instagram.com/parenthoodrewritten/" target="_blank" rel="noopener">See the profile ↗</a></div></article>
+                    <article class="reel-card"><div class="reel-media"><iframe loading="lazy" src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F29577794901813049&amp;show_text=0&amp;width=500" title="Animation sample" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe></div><div class="reel-copy"><span class="reel-kicker">Animation / Motion</span><h3>Animated short-form</h3><p>Talking-head reel with animated graphics and text. This sample is in Sinhala; the same treatment works in any language.</p><a class="reel-link" href="https://www.facebook.com/reel/29577794901813049" target="_blank" rel="noopener">Open the reel ↗</a></div></article>
+                </div>
+                <div class="trust">
+                    <div>
+                        <h3>Check our track record on Upwork</h3>
+                        <p>Read what past clients say and look through finished projects on our verified Upwork profile before you send anything.</p>
+                    </div>
+                    <div class="trust-actions">
+                        <a class="btn btn-upwork" href="https://www.upwork.com/freelancers/~015fe2fc26d880e899?mp_source=share" target="_blank" rel="noopener noreferrer">Read reviews on Upwork ↗</a>
+                        <a class="btn" href="https://www.upwork.com/freelancers/~015fe2fc26d880e899?p=2006235290879430656" target="_blank" rel="noopener noreferrer">Upwork project samples ↗</a>
+                    </div>
                 </div>
                 <div class="center-cta">
-                    <p class="muted" style="margin:0 0 1.5rem">Want yours to look like this?</p>
+                    <p class="muted" style="margin:0 0 1.5rem">Want yours edited like one of these?</p>
                     <a href="/start/" class="btn btn-primary btn-hero">Send your footage →</a>
                 </div>
             </div>
@@ -313,6 +345,14 @@
                         <p>The upload page takes files up to 1 GB each and 10 GB per project, straight from your browser. If your footage is already on Google Drive, Dropbox or Frame.io, paste the link instead.</p>
                     </details>
                     <details>
+                        <summary>Can you edit in a specific style?</summary>
+                        <p>Yes. Paste links to videos you like in the upload form and we will match that style for your brand, including pacing, captions, transitions and graphics.</p>
+                    </details>
+                    <details>
+                        <summary>Can I see reviews from past clients?</summary>
+                        <p>Yes. Our client reviews and past projects are public on <a href="https://www.upwork.com/freelancers/~015fe2fc26d880e899?mp_source=share" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">our Upwork profile</a>.</p>
+                    </details>
+                    <details>
                         <summary>How fast is delivery?</summary>
                         <p>Short-form edits are delivered within one day of you approving the quote. Podcast episodes and larger projects get a delivery date with the quote.</p>
                     </details>
@@ -345,6 +385,7 @@
             <span>&copy; 2026 Banuka Kannangara (Pvt) Ltd · Trading as BK Video Edit</span>
             <div class="footer-links">
                 <a href="/start/">Send footage</a>
+                <a href="https://www.upwork.com/freelancers/~015fe2fc26d880e899?mp_source=share" target="_blank" rel="noopener noreferrer">Upwork</a>
                 <a href="/privacy/">Privacy</a>
                 <a href="#home">Back to top ↑</a>
             </div>
