@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Your Footage | BK Video Edit</title>
+    <meta name="description" content="Send your raw footage to BK Video Edit. No account needed. Fill in a short brief, upload your files and get a quote.">
+    <link rel="canonical" href="https://bkvideoedit.com/start/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #0B0B0B;
+            --surface: #121212;
+            --text-main: #EDE9DF;
+            --text-muted: #A8A59B;
+            --accent: #E7A83E;
+            --accent-sec: #D45B4F;
+            --ok: #25D366;
+            --border: #2B2B29;
+            --font-heading: 'Oswald', sans-serif;
+            --font-body: 'Roboto Mono', monospace;
+        }
+        *, *::before, *::after { box-sizing: border-box; }
+        body { background: var(--bg); color: var(--text-main); font-family: var(--font-body); margin: 0; line-height: 1.7; }
+        a { color: inherit; text-decoration: none; }
+        [hidden] { display: none !important; }
+
+        .site-header { position: sticky; top: 0; background: rgba(11,11,11,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); z-index: 100; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 5%; max-width: 1600px; margin: 0 auto; gap: 1rem; }
+        .brand { display: flex; align-items: center; gap: 0.75rem; }
+        .logo-mark { width: 24px; height: 24px; border: 2px solid var(--text-main); display: flex; align-items: center; justify-content: center; flex: none; }
+        .playhead-line { width: 2px; height: 12px; background: var(--accent); }
+        .wordmark { font-family: var(--font-heading); letter-spacing: 0.05em; font-size: 1.05rem; }
+        .desktop-nav { display: flex; gap: 2rem; }
+        .desktop-nav a { font-size: 0.8rem; color: var(--text-muted); }
+        .desktop-nav a:hover { color: var(--text-main); }
+
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.9rem 1.6rem; font-family: var(--font-body); font-size: 0.9rem; font-weight: 500; cursor: pointer; border: 1px solid var(--border); background: transparent; color: var(--text-main); transition: transform .2s ease-out, background-color .2s ease-out, border-color .2s ease-out; }
+        .btn:hover { transform: translateY(-2px); border-color: var(--text-main); }
+        .btn-primary { background: var(--accent); color: var(--bg); border-color: var(--accent); font-weight: 700; }
+        .btn-primary:hover { background: #f0b95c; border-color: #f0b95c; }
+        .btn-wa { background: var(--ok); border-color: var(--ok); color: #06240f; font-weight: 700; }
+        .btn-wa:hover { background: #3be07a; border-color: #3be07a; }
+        .btn[disabled] { opacity: .5; cursor: not-allowed; transform: none; }
+        .header-btn { padding: 0.55rem 1rem; font-size: 0.75rem; }
+        .btn-big { padding: 1.1rem 2.2rem; font-size: 1.05rem; }
+
+        main { max-width: 820px; margin: 0 auto; padding: 3rem 5% 6rem; }
+        .eyebrow { font-size: 0.8rem; letter-spacing: 0.05em; color: var(--accent); }
+        h1 { font-family: var(--font-heading); font-size: clamp(2rem, 6.2vw, 3.6rem); line-height: 1.3; margin: 0.4rem 0 0.8rem; font-weight: 700; }
+        h1 span { color: var(--accent); }
+        .lead { color: var(--text-muted); max-width: 56ch; margin: 0 0 2rem; font-size: 1rem; }
+
+        /* step indicator */
+        .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; margin: 0 0 1.75rem; padding: 0; list-style: none; }
+        .steps li { border-top: 3px solid var(--border); padding-top: 0.6rem; font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; }
+        .steps b { display: block; font-family: var(--font-heading); font-size: 1.1rem; font-weight: 500; }
+        .steps li.on { border-color: var(--accent); color: var(--text-main); }
+        .steps li.on b { color: var(--accent); }
+        .steps li.past { border-color: var(--ok); }
+        .steps li.past b { color: var(--ok); }
+
+        .card { border: 1px solid var(--border); background: var(--surface); padding: 1.75rem; }
+        .card h2 { font-family: var(--font-heading); font-size: 1.5rem; margin: 0 0 0.75rem; line-height: 1.4; font-weight: 500; }
+        .guide { border-left: 3px solid var(--accent); background: rgba(231,168,62,0.07); padding: 0.9rem 1.1rem; margin: 0 0 1.5rem; font-size: 0.92rem; }
+        .guide ol, .guide ul { margin: 0; padding-left: 1.3rem; }
+        .guide li { margin-bottom: 0.3rem; }
+        .guide b { color: var(--accent); font-weight: 500; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+        .full { grid-column: 1 / -1; }
+        label { display: block; font-size: 0.88rem; color: var(--text-main); margin-bottom: 0.4rem; }
+        label i { color: var(--accent-sec); font-style: normal; }
+        label small { color: var(--text-muted); font-size: 0.8rem; }
+        input, select, textarea { width: 100%; background: var(--bg); border: 1px solid #3a3a37; color: var(--text-main); font-family: var(--font-body); font-size: 1rem; padding: 0.85rem 0.9rem; border-radius: 0; line-height: 1.5; }
+        textarea { min-height: 9rem; resize: vertical; }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); }
+        input[type=date] { color-scheme: dark; }
+        ::placeholder { color: #6f6d66; }
+        .hint { font-size: 0.82rem; color: var(--text-muted); margin: 0.5rem 0 0; }
+        .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+        .drop { border: 2px dashed #5a5850; padding: 2.25rem 1rem; text-align: center; cursor: pointer; transition: border-color .2s, background-color .2s; }
+        .drop:hover, .drop.over { border-color: var(--accent); background: rgba(231,168,62,0.06); }
+        .drop strong { display: block; font-family: var(--font-heading); font-size: 1.3rem; font-weight: 500; color: var(--accent); line-height: 1.5; }
+        .drop span { font-size: 0.85rem; color: var(--text-muted); }
+        .limits { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.9rem 0 0; padding: 0; list-style: none; font-size: 0.78rem; color: var(--text-muted); }
+        .limits li { border: 1px solid var(--border); padding: 0.25rem 0.6rem; }
+        .files { list-style: none; margin: 1rem 0 0; padding: 0; }
+        .files li { border: 1px solid var(--border); padding: 0.7rem 0.9rem; margin-bottom: 0.5rem; font-size: 0.85rem; }
+        .frow { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; }
+        .fname { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+        .fmeta { color: var(--text-muted); white-space: nowrap; flex: none; }
+        .fmeta button { background: none; border: 0; color: var(--accent-sec); font-family: inherit; font-size: inherit; cursor: pointer; padding: 0 0 0 0.75rem; }
+        .bar { height: 3px; background: var(--border); margin-top: 0.55rem; }
+        .bar i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .3s linear; }
+        li.done .bar i { background: var(--ok); }
+        li.done .fmeta { color: var(--ok); }
+        li.fail .bar i { background: var(--accent-sec); }
+        li.fail .fmeta { color: var(--accent-sec); white-space: normal; text-align: right; }
+
+        .actions { display: flex; flex-wrap: wrap; gap: 0.9rem; align-items: center; margin-top: 1.75rem; }
+        .actions .spacer { flex: 1; }
+        .msg { border: 1px solid var(--accent-sec); color: #f3bdb6; padding: 0.9rem 1rem; font-size: 0.9rem; margin-top: 1.25rem; white-space: pre-line; }
+        .total { display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .total-bar { height: 8px; background: var(--border); margin-bottom: 1.5rem; }
+        .total-bar i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .3s linear; }
+        .warn { color: var(--accent); }
+        .next { margin: 1rem 0 0; padding-left: 1.3rem; color: var(--text-muted); }
+        .next li { margin-bottom: 0.4rem; }
+        .safe { font-size: 0.82rem; color: var(--text-muted); margin-top: 1.25rem; }
+        .price-strip { margin: -1rem 0 2rem; font-size: 0.9rem; color: var(--text-muted); }
+        .price-strip b { color: var(--accent); }
+        .price-strip a { color: var(--text-main); border-bottom: 1px solid var(--accent); }
+        .checks { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .checks label { display: inline-flex; align-items: center; gap: 0.45rem; border: 1px solid #3a3a37; padding: 0.5rem 0.8rem; margin: 0; cursor: pointer; font-size: 0.88rem; }
+        .checks input { width: auto; accent-color: var(--accent); margin: 0; }
+        .optional { color: var(--text-muted); font-size: 0.85rem; margin: -0.75rem 0 1.25rem; }
+
+        .site-footer { padding: 2.5rem 5%; border-top: 1px solid var(--border); }
+        .footer-inner { display: flex; justify-content: space-between; align-items: center; max-width: 1600px; margin: 0 auto; flex-wrap: wrap; gap: 1.5rem; font-size: 0.75rem; color: var(--text-muted); }
+        .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .footer-links a:hover { color: var(--accent); }
+
+        @media (max-width: 700px) {
+            .desktop-nav { display: none; }
+            .grid { grid-template-columns: 1fr; }
+            .card { padding: 1.25rem; }
+            main { padding-top: 2rem; }
+            .actions .btn-primary { width: 100%; order: -1; }
+            .actions .spacer { display: none; }
+            .footer-inner { flex-direction: column; text-align: center; }
+        }
+    </style>
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="/" class="brand">
+                <div class="logo-mark"><span class="playhead-line"></span></div>
+                <span class="wordmark">BK VIDEO EDIT</span>
+            </a>
+            <nav class="desktop-nav">
+                <a href="/#work">Work</a>
+                <a href="/#services">Services</a>
+                <a href="/#pricing">Pricing</a>
+                <a href="/#contact">Contact</a>
+            </nav>
+            <a href="https://wa.me/94767794670?text=Hi%20BK%20Authority%20Media%2C%20I%27d%20like%20to%20discuss%20a%20video%20project." class="btn btn-wa header-btn" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- THE GUIDED FORM -->
+        <section id="view-form">
+            <span class="eyebrow">SEND YOUR FOOTAGE</span>
+            <h1>Send your footage.<br><span>We handle the edit.</span></h1>
+            <p class="lead">No account, no sign-up. Four short steps, about three minutes.</p>
+            <p class="price-strip">Short-form edits from <b>$29</b> per video. <a href="/#pricing">See all pricing →</a></p>
+
+            <ol class="steps" id="steps">
+                <li class="on"><b>01</b>Your details</li>
+                <li><b>02</b>The video</li>
+                <li><b>03</b>Brand &amp; style</li>
+                <li><b>04</b>Upload</li>
+            </ol>
+
+            <form id="form" novalidate>
+                <!-- STEP 1 -->
+                <div class="card" data-step="1">
+                    <h2>Step 1: Your details</h2>
+                    <div class="guide">Tell us how to reach you. We reply by <b>email</b> within one business day. Add a WhatsApp number if you prefer to chat there.</div>
+                    <div class="grid">
+                        <div>
+                            <label for="name">Your name <i>*</i></label>
+                            <input id="name" name="name" autocomplete="name" maxlength="80">
+                        </div>
+                        <div>
+                            <label for="company">Business or brand</label>
+                            <input id="company" name="company" autocomplete="organization" maxlength="80">
+                        </div>
+                        <div>
+                            <label for="email">Email <i>*</i></label>
+                            <input id="email" name="email" type="email" autocomplete="email" maxlength="120">
+                        </div>
+                        <div>
+                            <label for="country">Country</label>
+                            <input id="country" name="country" autocomplete="country-name" maxlength="80">
+                        </div>
+                        <div class="full">
+                            <label for="whatsapp">WhatsApp number <small>(optional, with country code)</small></label>
+                            <input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="+1 555 123 4567" maxlength="30">
+                        </div>
+                        <div class="hp" aria-hidden="true">
+                            <label for="website">Leave this empty</label>
+                            <input id="website" name="website" tabindex="-1" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 2 -->
+                <div class="card" data-step="2" hidden>
+                    <h2>Step 2: Tell us about the video</h2>
+                    <div class="guide">Describe what you need. Not sure about something? Write what you know and we will ask about the rest.</div>
+                    <div class="grid">
+                        <div>
+                            <label for="videoType">What kind of video?</label>
+                            <select id="videoType" name="videoType">
+                                <option value="Reels / Shorts / TikTok">Reels / Shorts / TikTok</option>
+                                <option value="YouTube video">YouTube video</option>
+                                <option value="Ad / promo video">Ad / Promo video</option>
+                                <option value="Talking head / podcast">Talking head / Podcast</option>
+                                <option value="Event / wedding highlight">Event / Wedding highlight</option>
+                                <option value="Motion graphics">Motion graphics</option>
+                                <option value="Other / not sure">Something else / not sure</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="videoCount">How many videos?</label>
+                            <input id="videoCount" name="videoCount" inputmode="numeric" placeholder="e.g. 4" maxlength="40">
+                        </div>
+                        <div>
+                            <label for="speed">How fast do you need it?</label>
+                            <select id="speed" name="speed">
+                                <option value="Standard (3-5 days)">Standard (3-5 days)</option>
+                                <option value="Fast (48 hours)">Fast (48 hours)</option>
+                                <option value="Rush (24 hours)">Rush (24 hours)</option>
+                                <option value="Flexible / no rush">Flexible, no rush</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="deadline">Deadline <small>(if any)</small></label>
+                            <input id="deadline" name="deadline" type="date">
+                        </div>
+                        <div>
+                            <label for="videoLength">Length of each video</label>
+                            <select id="videoLength" name="videoLength">
+                                <option value="Not sure">Not sure yet</option>
+                                <option value="Under 30 seconds">Under 30 seconds</option>
+                                <option value="30-60 seconds">30 to 60 seconds</option>
+                                <option value="1-3 minutes">1 to 3 minutes</option>
+                                <option value="3-10 minutes">3 to 10 minutes</option>
+                                <option value="Over 10 minutes">Over 10 minutes</option>
+                            </select>
+                        </div>
+                        <div class="full">
+                            <label>Where will it be posted? <small>(pick any)</small></label>
+                            <div class="checks" id="platforms">
+                                <label><input type="checkbox" value="Facebook"> Facebook</label>
+                                <label><input type="checkbox" value="Instagram"> Instagram</label>
+                                <label><input type="checkbox" value="TikTok"> TikTok</label>
+                                <label><input type="checkbox" value="YouTube"> YouTube</label>
+                                <label><input type="checkbox" value="LinkedIn"> LinkedIn</label>
+                                <label><input type="checkbox" value="Ads"> Paid ads</label>
+                            </div>
+                        </div>
+                        <div class="full">
+                            <label for="description">What do you need? <i>*</i></label>
+                            <textarea id="description" name="description" maxlength="4000" placeholder="Describe the result you want: style, pacing, captions, music, what the video is for, and anything it must include."></textarea>
+                        </div>
+                        <div class="full">
+                            <label for="references">Reference videos <small>(optional)</small></label>
+                            <textarea id="references" name="references" maxlength="1500" style="min-height:4.5rem" placeholder="Paste links to videos whose style you like, one per line."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 3 -->
+                <div class="card" data-step="3" hidden>
+                    <h2>Step 3: Brand and style</h2>
+                    <div class="guide">These details help us match your brand on the first pass. The <b>“what not to do”</b> box saves the most revision time.</div>
+                    <p class="optional">Everything in this step is optional. Skip anything you are unsure about.</p>
+                    <div class="grid">
+                        <div>
+                            <label for="logo">Do you have a logo?</label>
+                            <select id="logo" name="logo">
+                                <option value="Has a logo, uploading it with the footage">Yes, I will upload it in the next step</option>
+                                <option value="Has a logo, will send it later">Yes, I will send it later</option>
+                                <option value="No logo">No logo</option>
+                                <option value="No logo, wants one made">No, and I would like one made</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="brand">Brand colors and fonts <small>(optional)</small></label>
+                            <input id="brand" name="brand" maxlength="500" placeholder="e.g. navy and gold, clean sans-serif">
+                        </div>
+                        <div>
+                            <label for="captions">Captions</label>
+                            <select id="captions" name="captions">
+                                <option value="English captions">English captions</option>
+                                <option value="Captions in another language (see notes)">Another language (say which in your notes)</option>
+                                <option value="No captions">No captions</option>
+                                <option value="Editor decides">You decide</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="music">Music</label>
+                            <select id="music" name="music">
+                                <option value="Editor decides">You pick something that fits</option>
+                                <option value="Trending music">Trending music</option>
+                                <option value="Energetic music">Energetic / fast</option>
+                                <option value="Calm music">Calm / soft</option>
+                                <option value="No music">No music</option>
+                            </select>
+                        </div>
+                        <div class="full">
+                            <label for="endCard">Call to action or contact details to show <small>(website, handle, offer)</small></label>
+                            <textarea id="endCard" name="endCard" maxlength="500" style="min-height:4.5rem" placeholder="e.g. yourbrand.com · @yourbrand · “Book a free call”"></textarea>
+                        </div>
+                        <div class="full">
+                            <label for="mustInclude">Must include</label>
+                            <textarea id="mustInclude" name="mustInclude" maxlength="2000" style="min-height:5.5rem" placeholder="e.g. Product close-ups, the price, logo in the first three seconds."></textarea>
+                        </div>
+                        <div class="full">
+                            <label for="dontDo">What not to do</label>
+                            <textarea id="dontDo" name="dontDo" maxlength="2000" style="min-height:5.5rem" placeholder="e.g. No loud music. No zoom cuts on my face. No emojis. Do not mention competitors."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 4 -->
+                <div class="card" data-step="4" hidden>
+                    <h2>Step 4: Upload your footage</h2>
+                    <div class="guide">
+                        <ol>
+                            <li><b>Tap the box below</b> and choose your videos, audio, <b>logo</b> and photos.</li>
+                            <li>Press <b>“Send footage”</b>.</li>
+                            <li><b>Keep this page open</b> until the upload finishes.</li>
+                        </ol>
+                    </div>
+                    <div class="drop" id="drop" role="button" tabindex="0" aria-label="Choose files">
+                        <strong>Tap here to choose files</strong>
+                        <span>Videos, audio, photos, logo, scripts</span>
+                    </div>
+                    <input id="picker" type="file" multiple hidden>
+                    <ul class="limits">
+                        <li>Up to 1 GB per file</li>
+                        <li>Up to 10 GB in total</li>
+                        <li>No ZIP or RAR files</li>
+                        <li>Use Wi-Fi for large files</li>
+                    </ul>
+                    <div class="msg" id="fileWarn" hidden></div>
+                    <ul class="files" id="files"></ul>
+                    <div style="margin-top:1.5rem">
+                        <label for="footageLink">Footage already online? Paste a Google Drive, Dropbox or Frame.io link instead</label>
+                        <input id="footageLink" name="footageLink" type="url" inputmode="url" placeholder="https://drive.google.com/..." maxlength="500">
+                        <p class="hint">Footage not ready yet? Send the brief now and share the files later by email.</p>
+                    </div>
+                    <p class="safe">Your files are private. They go straight into our own Google Drive and only our team can open them.</p>
+                </div>
+
+                <div class="msg" id="error" role="alert" hidden></div>
+                <div class="actions">
+                    <button class="btn" id="back" type="button" hidden>← Back</button>
+                    <span class="spacer"></span>
+                    <span class="hint" id="submitHint" style="margin:0"></span>
+                    <button class="btn btn-primary btn-big" id="next" type="submit">Next step →</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- UPLOADING -->
+        <section id="view-upload" hidden>
+            <span class="eyebrow">UPLOADING</span>
+            <h1>Your footage is <span>uploading.</span></h1>
+            <div class="card">
+                <div class="guide">
+                    <ul>
+                        <li>We have your brief.</li>
+                        <li><b>Keep this page open until the upload finishes.</b></li>
+                        <li>On a phone, keep the screen on and stay in this tab.</li>
+                    </ul>
+                </div>
+                <div class="total"><span id="totalLabel">Starting…</span><span id="totalPct">0%</span></div>
+                <div class="total-bar"><i id="totalBar"></i></div>
+                <ul class="files" id="progress"></ul>
+            </div>
+        </section>
+
+        <!-- DONE -->
+        <section id="view-done" hidden>
+            <span class="eyebrow">RECEIVED</span>
+            <h1>Got it. <span>Thank you.</span></h1>
+            <div class="card">
+                <h2 id="doneTitle">We have your brief.</h2>
+                <div class="msg" id="doneWarn" hidden style="margin:0 0 1.25rem"></div>
+                <p style="margin:0">Here is what happens next:</p>
+                <ol class="next">
+                    <li>We review your footage and brief.</li>
+                    <li>We email you a fixed quote and a delivery date within one business day.</li>
+                    <li>Once you approve, we start the edit.</li>
+                    <li>You review the edit and tell us what to change.</li>
+                </ol>
+                <div class="actions">
+                    <a class="btn btn-wa btn-big" id="doneWa" target="_blank" rel="noopener noreferrer" href="#">Message us on WhatsApp</a>
+                    <a class="btn" href="/">Back to home</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <span>&copy; 2026 Banuka Kannangara (Pvt) Ltd · Trading as BK Video Edit</span>
+            <div class="footer-links">
+                <a href="/privacy/">Privacy</a>
+                <a href="/">Home</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    (function () {
+        // Backend: Google Apps Script web app (creates the Drive folder + ClickUp card).
+        var API = 'https://script.google.com/macros/s/AKfycbwuadNG5MkQN26zs9FqBuI3zUcE_uIWvpSQB9OtQxJ82Sgpvo8d45xfi-gUuin825evfQ/exec';
+        var WA_NUMBER = '94767794670';
+        var CHUNK = 8 * 1024 * 1024;   // must be a multiple of 256 KB
+        var PARALLEL = 2;
+        var GB = 1024 * 1024 * 1024;
+        var MAX_FILE = 1 * GB, MAX_TOTAL = 10 * GB, MAX_COUNT = 100;
+        // Keep in step with ALLOWED_EXT in the Apps Script (the server checks again).
+        var ALLOWED = ('mp4 mov m4v mkv avi webm mts m2ts mxf 3gp wmv mpg mpeg ' +
+            'mp3 wav m4a aac ogg oga opus flac wma ' +
+            'jpg jpeg png webp heic heif gif bmp tif tiff psd ' +
+            'pdf txt srt vtt csv docx pptx xlsx').split(' ');
+
+        // Messages for error codes the server sends back.
+        var ERR = {
+            NEED_NAME: 'Please enter your name.',
+            NEED_EMAIL: 'Please enter your email address.',
+            NEED_PHONE: 'Please check the WhatsApp number (include the country code).',
+            BAD_EMAIL: 'Please check the email address.',
+            NEED_DESCRIPTION: 'Please describe what you need.',
+            BUSY: 'We are receiving a lot of requests right now. Please try again in a few minutes.',
+            SESSION_EXPIRED: 'Session timed out',
+            TYPE_NOT_ALLOWED: 'this file type is not accepted',
+            FILE_TOO_BIG: 'larger than 1 GB',
+            TOTAL_TOO_BIG: 'total would be over 10 GB',
+            TOO_MANY_FILES: 'too many files',
+            EMPTY_FILE: 'empty file',
+            STORAGE_FULL: 'cannot be uploaded right now, please send a link instead',
+            UPLOAD_START_FAILED: 'could not start the upload'
+        };
+
+        var $ = function (id) { return document.getElementById(id); };
+        var form = $('form'), picker = $('picker'), drop = $('drop');
+        var chosen = [];
+        var step = 1, LAST = 4;
+        var uploading = false;
+
+        function human(n) {
+            if (n >= 1073741824) return (n / 1073741824).toFixed(2) + ' GB';
+            if (n >= 1048576) return (n / 1048576).toFixed(1) + ' MB';
+            return Math.max(1, Math.round(n / 1024)) + ' KB';
+        }
+        function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+        function show(view) {
+            ['view-form', 'view-upload', 'view-done'].forEach(function (v) { $(v).hidden = v !== view; });
+            window.scrollTo(0, 0);
+        }
+        function fail(text) { var e = $('error'); e.textContent = text || ''; e.hidden = !text; }
+        function v(id) { return $(id).value.trim(); }
+
+        /* ----- moving between the three steps ----- */
+        function paintStep() {
+            Array.prototype.forEach.call(form.querySelectorAll('[data-step]'), function (el) {
+                el.hidden = Number(el.getAttribute('data-step')) !== step;
+            });
+            Array.prototype.forEach.call($('steps').children, function (li, i) {
+                li.className = i + 1 === step ? 'on' : (i + 1 < step ? 'past' : '');
+            });
+            $('back').hidden = step === 1;
+            paintButton();
+            fail('');
+        }
+        function paintButton() {
+            var total = chosen.reduce(function (s, f) { return s + f.size; }, 0);
+            $('submitHint').textContent = step === LAST && chosen.length ? chosen.length + (chosen.length === 1 ? ' file · ' : ' files · ') + human(total) : '';
+            $('next').textContent = step < LAST ? 'Next step →' : (chosen.length ? 'Send footage' : 'Send brief');
+        }
+        function checkStep(n) {
+            if (n === 1) {
+                if (!v('name')) { fail(ERR.NEED_NAME); $('name').focus(); return false; }
+                if (!v('email')) { fail(ERR.NEED_EMAIL); $('email').focus(); return false; }
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('email'))) { fail(ERR.BAD_EMAIL); $('email').focus(); return false; }
+                var digits = v('whatsapp').replace(/\D/g, '').length;
+                if (digits && digits < 7) { fail(ERR.NEED_PHONE); $('whatsapp').focus(); return false; }
+            }
+            if (n === 2 && !v('description')) { fail(ERR.NEED_DESCRIPTION); $('description').focus(); return false; }
+            return true;
+        }
+        function go(n) {
+            step = n; paintStep();
+            $('steps').scrollIntoView({ block: 'start', behavior: 'smooth' });
+        }
+        $('back').addEventListener('click', function () { if (step > 1) go(step - 1); });
+
+        /* ----- choosing files ----- */
+        function renderChosen() {
+            var ul = $('files');
+            ul.textContent = '';
+            chosen.forEach(function (file, i) {
+                var li = document.createElement('li');
+                var row = document.createElement('div'); row.className = 'frow';
+                var name = document.createElement('span'); name.className = 'fname'; name.textContent = file.name;
+                var meta = document.createElement('span'); meta.className = 'fmeta'; meta.textContent = human(file.size);
+                var rm = document.createElement('button'); rm.type = 'button'; rm.textContent = 'Remove';
+                rm.addEventListener('click', function () { chosen.splice(i, 1); renderChosen(); });
+                meta.appendChild(rm); row.appendChild(name); row.appendChild(meta); li.appendChild(row); ul.appendChild(li);
+            });
+            paintButton();
+        }
+        function addFiles(list) {
+            var skipped = [];
+            var total = chosen.reduce(function (s, f) { return s + f.size; }, 0);
+            Array.prototype.forEach.call(list, function (f) {
+                var ext = (/\.([a-z0-9]{1,5})$/i.exec(f.name) || [])[1];
+                var why = !f.size ? ERR.EMPTY_FILE
+                    : !ext || ALLOWED.indexOf(ext.toLowerCase()) === -1 ? ERR.TYPE_NOT_ALLOWED
+                    : f.size > MAX_FILE ? ERR.FILE_TOO_BIG
+                    : total + f.size > MAX_TOTAL ? ERR.TOTAL_TOO_BIG
+                    : chosen.length >= MAX_COUNT ? ERR.TOO_MANY_FILES : '';
+                if (why) { skipped.push(f.name + ' : ' + why); return; }
+                var dup = chosen.some(function (c) { return c.name === f.name && c.size === f.size && c.lastModified === f.lastModified; });
+                if (!dup) { chosen.push(f); total += f.size; }
+            });
+            var w = $('fileWarn');
+            w.hidden = !skipped.length;
+            w.textContent = skipped.length ? 'These files were not added:\n' + skipped.join('\n') : '';
+            renderChosen();
+        }
+        drop.addEventListener('click', function () { picker.click(); });
+        drop.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); picker.click(); } });
+        picker.addEventListener('change', function () { addFiles(picker.files); picker.value = ''; });
+        ['dragenter', 'dragover'].forEach(function (t) { drop.addEventListener(t, function (e) { e.preventDefault(); drop.classList.add('over'); }); });
+        ['dragleave', 'drop'].forEach(function (t) { drop.addEventListener(t, function (e) { e.preventDefault(); drop.classList.remove('over'); }); });
+        drop.addEventListener('drop', function (e) { if (e.dataTransfer && e.dataTransfer.files) addFiles(e.dataTransfer.files); });
+        window.addEventListener('beforeunload', function (e) { if (uploading) { e.preventDefault(); e.returnValue = ''; } });
+
+        /* ----- talking to the backend ----- */
+        async function api(payload, tries) {
+            var lastErr;
+            for (var i = 0; i < (tries || 1); i++) {
+                try {
+                    // text/plain keeps this a "simple" cross-origin request (no preflight), which Apps Script needs
+                    var res = await fetch(API, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) });
+                    var data = await res.json();
+                    if (!data.ok) { var err = new Error(data.error || 'ERROR'); err.final = true; throw err; }
+                    return data;
+                } catch (err) {
+                    if (err.final) throw err;
+                    lastErr = err;
+                    await sleep(1500 * (i + 1));
+                }
+            }
+            throw lastErr || new Error('NETWORK');
+        }
+
+        /* ----- uploading one file straight to Google Drive, in chunks, resuming on errors ----- */
+        async function committed(url, size) {
+            // ask Drive how many bytes it already has
+            var r = await fetch(url, { method: 'PUT', headers: { 'Content-Range': 'bytes */' + size } });
+            if (r.status === 200 || r.status === 201) return size;
+            if (r.status === 308) {
+                var range = r.headers.get('Range');
+                return range ? Number(range.split('-')[1]) + 1 : 0;
+            }
+            throw new Error('status ' + r.status);
+        }
+        async function uploadFile(session, file, onProgress) {
+            var init = await api({
+                action: 'initUpload', folderId: session.folderId, taskId: session.taskId, exp: session.exp, sig: session.sig,
+                name: file.name, size: file.size, mime: file.type, origin: location.origin
+            }, 3);
+            var url = init.uploadUrl, offset = 0, errors = 0;
+            while (offset < file.size) {
+                var end = Math.min(offset + CHUNK, file.size);
+                try {
+                    var r = await fetch(url, {
+                        method: 'PUT',
+                        headers: { 'Content-Range': 'bytes ' + offset + '-' + (end - 1) + '/' + file.size },
+                        body: file.slice(offset, end)
+                    });
+                    if (r.status === 200 || r.status === 201) { offset = file.size; }
+                    else if (r.status === 308) {
+                        var range = r.headers.get('Range');
+                        offset = range ? Number(range.split('-')[1]) + 1 : end;
+                    }
+                    else if (r.status >= 500 || r.status === 429) { throw new Error('status ' + r.status); }
+                    else { var e = new Error('REJECTED'); e.final = true; throw e; }
+                    errors = 0;
+                    onProgress(offset);
+                } catch (err) {
+                    if (err.final || ++errors > 8) throw err;
+                    await sleep(Math.min(30000, 2000 * errors));
+                    try { offset = await committed(url, file.size); onProgress(offset); } catch (ignore) { /* retry the same chunk */ }
+                }
+            }
+        }
+
+        async function uploadAll(session) {
+            var rows = [], sent = [], failed = [];
+            var total = chosen.reduce(function (s, f) { return s + f.size; }, 0);
+            var ul = $('progress'); ul.textContent = '';
+            chosen.forEach(function (file, i) {
+                var li = document.createElement('li');
+                var row = document.createElement('div'); row.className = 'frow';
+                var name = document.createElement('span'); name.className = 'fname'; name.textContent = file.name;
+                var meta = document.createElement('span'); meta.className = 'fmeta'; meta.textContent = 'Waiting';
+                var bar = document.createElement('div'); bar.className = 'bar';
+                var fill = document.createElement('i'); bar.appendChild(fill);
+                row.appendChild(name); row.appendChild(meta); li.appendChild(row); li.appendChild(bar); ul.appendChild(li);
+                rows[i] = { li: li, meta: meta, fill: fill }; sent[i] = 0;
+            });
+            function paint() {
+                var done = sent.reduce(function (s, n) { return s + n; }, 0);
+                var pct = total ? Math.floor(done / total * 100) : 100;
+                $('totalPct').textContent = pct + '%';
+                $('totalBar').style.width = pct + '%';
+                $('totalLabel').textContent = human(done) + ' of ' + human(total);
+            }
+            paint();
+            var next = 0;
+            async function worker() {
+                while (next < chosen.length) {
+                    var i = next++, file = chosen[i], row = rows[i];
+                    row.meta.textContent = '0%';
+                    try {
+                        await uploadFile(session, file, function (bytes) {
+                            sent[i] = bytes;
+                            var p = Math.floor(bytes / file.size * 100);
+                            row.meta.textContent = p + '%'; row.fill.style.width = p + '%';
+                            paint();
+                        });
+                        row.li.className = 'done'; row.meta.textContent = 'Done ✓ ' + human(file.size); row.fill.style.width = '100%';
+                    } catch (err) {
+                        failed.push(file.name);
+                        row.li.className = 'fail'; row.fill.style.width = '100%';
+                        row.meta.textContent = ERR[err.message] || 'Upload failed';
+                        sent[i] = file.size; paint();
+                    }
+                }
+            }
+            var workers = [];
+            for (var w = 0; w < Math.min(PARALLEL, chosen.length); w++) workers.push(worker());
+            await Promise.all(workers);
+            return failed;
+        }
+
+        /* ----- next / submit ----- */
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            fail('');
+            if (step < LAST) { if (checkStep(step)) go(step + 1); return; }
+            if (!checkStep(1)) { step = 1; paintStep(); checkStep(1); return; }
+            if (!checkStep(2)) { step = 2; paintStep(); checkStep(2); return; }
+
+            var btn = $('next');
+            btn.disabled = true; $('back').disabled = true; btn.textContent = 'Sending…';
+            var session;
+            try {
+                session = await api({
+                    action: 'create', site: 'intl', country: v('country'),
+                    timezone: (function () { try { return Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) { return ''; } })(),
+                    name: v('name'), company: v('company'), whatsapp: v('whatsapp'), email: v('email'),
+                    videoType: v('videoType'), videoCount: v('videoCount'), speed: v('speed'), deadline: v('deadline'),
+                    description: v('description'), references: v('references'), footageLink: v('footageLink'),
+                    videoLength: v('videoLength'), logo: v('logo'), brand: v('brand'), captions: v('captions'), music: v('music'),
+                    endCard: v('endCard'), mustInclude: v('mustInclude'), dontDo: v('dontDo'),
+                    platforms: Array.prototype.map.call($('platforms').querySelectorAll('input:checked'), function (c) { return c.value; }).join(', '),
+                    website: $('website').value, willUpload: chosen.length > 0
+                });
+            } catch (err) {
+                btn.disabled = false; $('back').disabled = false; paintButton();
+                fail(err.final ? (ERR[err.message] || 'Something went wrong. Please try again.')
+                    : 'Could not send. Please check your internet connection and try again.');
+                return;
+            }
+
+            var failed = [], blocked = [];
+            if (chosen.length) {
+                show('view-upload');
+                uploading = true;
+                var wake = null;
+                try { if (navigator.wakeLock) wake = await navigator.wakeLock.request('screen'); } catch (ignore) {}
+                try { failed = await uploadAll(session); } catch (err) { failed = chosen.map(function (f) { return f.name; }); }
+                uploading = false;
+                try { if (wake) wake.release(); } catch (ignore) {}
+                try {
+                    var d = await api({ action: 'done', folderId: session.folderId, taskId: session.taskId, exp: session.exp, sig: session.sig, failed: failed }, 3);
+                    blocked = d.blocked || [];
+                } catch (ignore) {}
+            }
+
+            var okCount = chosen.length - failed.length - blocked.length;
+            $('doneTitle').textContent = !chosen.length ? 'We have your brief.'
+                : (failed.length || blocked.length) ? 'We received ' + okCount + ' of ' + chosen.length + ' files.'
+                : 'We have your brief and ' + okCount + (okCount === 1 ? ' file.' : ' files.');
+            var warn = [];
+            if (failed.length) warn.push('These files did not upload:\n' + failed.join('\n') + '\nPlease send them by email or share a Drive link.');
+            if (blocked.length) warn.push('These files were rejected as unsafe:\n' + blocked.join('\n'));
+            if (warn.length) { $('doneWarn').hidden = false; $('doneWarn').textContent = warn.join('\n\n'); }
+            $('doneWa').href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(
+                'Hi BK Video Edit, I just sent a project through your website. Name: ' + v('name') + (v('company') ? ' (' + v('company') + ')' : '') + '.');
+            show('view-done');
+        });
+
+        paintStep();
+    })();
+    </script>
+</body>
+</html>

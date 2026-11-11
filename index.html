@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BK Video Edit | Send Your Footage, Get a Post-Ready Video</title>
+    <meta name="description" content="Video editing for creators, coaches and businesses. Upload your raw footage, get a fixed quote, and receive a post-ready edit with captions, music and color. Short-form edits from $29.">
+    <link rel="canonical" href="https://bkvideoedit.com/">
+    <!-- Language versions: add one line per language when /es/, /de/ or /fr/ go live. -->
+    <link rel="alternate" hreflang="en" href="https://bkvideoedit.com/">
+    <link rel="alternate" hreflang="x-default" href="https://bkvideoedit.com/">
+    <meta property="og:title" content="BK Video Edit | Send Your Footage, Get a Post-Ready Video">
+    <meta property="og:description" content="Upload your raw footage, get a fixed quote, receive a post-ready edit. Short-form edits from $29.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bkvideoedit.com/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #0B0B0B;
+            --surface: #121212;
+            --text-main: #EDE9DF;
+            --text-muted: #A8A59B;
+            --accent: #E7A83E;
+            --accent-sec: #D45B4F;
+            --ok: #25D366;
+            --border: #2B2B29;
+            --font-heading: 'Oswald', sans-serif;
+            --font-mono: 'Roboto Mono', monospace;
+        }
+        html { scroll-behavior: smooth; }
+        *, *::before, *::after { box-sizing: border-box; }
+        body { background: var(--bg); color: var(--text-main); font-family: var(--font-mono); margin: 0; line-height: 1.6; overflow-x: hidden; }
+        a { color: inherit; text-decoration: none; }
+        .wrap { max-width: 1400px; margin: 0 auto; padding: 0 5%; }
+        h1, h2, h3 { font-family: var(--font-heading); text-transform: uppercase; margin: 0; line-height: 1.1; }
+        h1 { font-size: clamp(2.6rem, 6.8vw, 5.4rem); letter-spacing: -0.01em; }
+        h2 { font-size: clamp(1.9rem, 4.4vw, 3.6rem); }
+        h3 { font-size: 1.4rem; font-weight: 500; }
+        .accent { color: var(--accent); }
+        .meta { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0 0 0.8rem; }
+        .muted { color: var(--text-muted); }
+
+        .btn { display: inline-block; font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 1rem 1.8rem; border: 1px solid var(--border); cursor: pointer; transition: transform .2s ease-out, background-color .2s ease-out, border-color .2s ease-out; }
+        .btn:hover { transform: translateY(-2px); border-color: var(--text-main); }
+        .btn-primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+        .btn-primary:hover { background: #f0b95c; border-color: #f0b95c; }
+        .btn-hero { font-size: 1.05rem; padding: 1.2rem 2.2rem; box-shadow: 0 8px 30px rgba(231,168,62,0.25); }
+        .btn-small { padding: 0.55rem 1rem; font-size: 0.72rem; }
+
+        header.site { position: fixed; top: 0; width: 100%; background: rgba(11,11,11,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); z-index: 100; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 5%; max-width: 1600px; margin: 0 auto; gap: 1rem; }
+        .brand { display: flex; align-items: center; gap: 0.75rem; }
+        .logo-mark { width: 24px; height: 24px; border: 2px solid var(--text-main); display: flex; align-items: center; justify-content: center; flex: none; }
+        .logo-mark span { width: 2px; height: 12px; background: var(--accent); }
+        .wordmark { font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700; letter-spacing: 0.05em; }
+        nav.main { display: flex; gap: 2rem; }
+        nav.main a { font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); }
+        nav.main a:hover { color: var(--text-main); }
+
+        .hero { min-height: 100vh; display: grid; grid-template-columns: 1.15fr 0.85fr; align-items: center; gap: 4rem; padding: 8rem 5% 4rem; max-width: 1600px; margin: 0 auto; }
+        .badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(37,211,102,0.1); border: 1px solid rgba(37,211,102,0.3); color: var(--ok); padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 0.7rem; text-transform: uppercase; margin-bottom: 1.25rem; }
+        .badge i { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 8px var(--ok); }
+        .hero p.sub { color: var(--text-muted); font-size: 1.05rem; max-width: 540px; margin: 1.5rem 0 2rem; }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+        .hero-note { color: var(--text-muted); font-size: 0.8rem; margin: 1.1rem 0 0; }
+        .video-frame { width: 100%; max-width: 320px; aspect-ratio: 9/16; margin: 0 auto; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: #000; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+        section.block { padding: 6rem 0; }
+        .section-head { border-bottom: 1px solid var(--border); padding-bottom: 1.25rem; margin-bottom: 3rem; }
+        .section-head p.intro { color: var(--text-muted); max-width: 680px; margin: 1rem 0 0; }
+
+        .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem; }
+        .card { border: 1px solid var(--border); background: var(--surface); padding: 1.75rem; }
+        .card .num { font-family: var(--font-heading); font-size: 2rem; color: var(--accent); }
+        .card h3 { margin: 0.4rem 0 0.6rem; }
+        .card p { color: var(--text-muted); margin: 0; font-size: 0.92rem; }
+        .center-cta { text-align: center; margin-top: 2.5rem; }
+
+        .reels-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem; align-items: start; }
+        .reel-card { min-width: 0; background: linear-gradient(145deg, #171612, #0d0d0c); border: 1px solid var(--border); overflow: hidden; }
+        .reel-media { position: relative; width: 100%; aspect-ratio: 9/16; max-height: 620px; background: #000; overflow: hidden; }
+        .reel-media iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+        .reel-copy { padding: 1.4rem 1.35rem 1.5rem; }
+        .reel-kicker { color: var(--accent); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; }
+        .reel-copy h3 { font-size: 1.4rem; line-height: 1.15; margin: .6rem 0; font-weight: 700; }
+        .reel-copy p { color: var(--text-muted); font-size: .8rem; line-height: 1.7; margin: 0 0 1rem; }
+        .reel-link { display: inline-block; color: var(--accent); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; border-bottom: 1px solid var(--accent); padding-bottom: .25rem; }
+
+        .price-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.2rem; }
+        .price-card { border: 1px solid var(--border); background: var(--surface); padding: 1.6rem; display: flex; flex-direction: column; }
+        .price-card.main { border-color: var(--accent); }
+        .price-tag { font-size: 0.72rem; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; }
+        .price-card h3 { margin: 0.4rem 0 0; }
+        .price-now { font-family: var(--font-heading); font-size: 2.6rem; line-height: 1.2; margin-top: 0.6rem; }
+        .price-now small { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted); }
+        .price-card p { color: var(--text-muted); font-size: 0.9rem; margin: 0.8rem 0 0; }
+        .price-card ul { margin: 0.9rem 0 0; padding-left: 1.1rem; font-size: 0.88rem; }
+        .price-card li { margin-bottom: 0.25rem; }
+        .price-extra { margin-top: auto; padding-top: 1rem; font-size: 0.8rem; color: var(--accent); }
+        .price-notes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; margin-top: 1.2rem; }
+        .price-note { border: 1px dashed var(--border); padding: 1.1rem 1.3rem; font-size: 0.9rem; color: var(--text-muted); }
+        .price-note b { color: var(--text-main); display: block; margin-bottom: 0.2rem; }
+        .price-note span { color: var(--accent); }
+
+        .faq { max-width: 900px; }
+        .faq details { border-bottom: 1px solid var(--border); padding: 1.2rem 0; }
+        .faq summary { cursor: pointer; font-family: var(--font-heading); font-size: 1.2rem; text-transform: uppercase; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+        .faq summary::-webkit-details-marker { display: none; }
+        .faq summary::after { content: '+'; color: var(--accent); }
+        .faq details[open] summary::after { content: '–'; }
+        .faq p { color: var(--text-muted); margin: 0.8rem 0 0; max-width: 70ch; }
+
+        .final { background: var(--surface); border-top: 1px solid var(--border); text-align: center; padding: 7rem 5%; }
+        .final p { color: var(--text-muted); max-width: 620px; margin: 1.5rem auto 2rem; font-size: 1.05rem; }
+        .final .alt { display: block; margin-top: 1.5rem; font-size: 0.85rem; color: var(--text-muted); }
+        .final .alt a { color: var(--text-main); border-bottom: 1px solid var(--accent); }
+
+        footer.site { padding: 3rem 5%; border-top: 1px solid var(--border); }
+        .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; max-width: 1600px; margin: 0 auto; font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); }
+        .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .footer-links a:hover { color: var(--accent); }
+
+        @media (max-width: 1100px) { .price-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (max-width: 900px) {
+            nav.main { display: none; }
+            .hero { grid-template-columns: 1fr; text-align: center; padding-top: 7rem; gap: 2.5rem; min-height: 0; }
+            .hero p.sub { margin-inline: auto; }
+            .hero-actions { justify-content: center; }
+            .hero-actions .btn-hero { width: 100%; }
+            .grid-3, .price-notes { grid-template-columns: 1fr; }
+            .reels-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            section.block { padding: 4rem 0; }
+            .footer-inner { flex-direction: column; text-align: center; }
+        }
+        @media (max-width: 600px) { .reels-grid, .price-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <header class="site">
+        <div class="header-inner">
+            <a href="/" class="brand">
+                <div class="logo-mark"><span></span></div>
+                <span class="wordmark">BK VIDEO EDIT</span>
+            </a>
+            <nav class="main">
+                <a href="#how">How it works</a>
+                <a href="#work">Work</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#faq">FAQ</a>
+            </nav>
+            <a href="/start/" class="btn btn-primary btn-small">Send footage</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div>
+                <div class="badge"><i></i> Taking new projects</div>
+                <p class="meta">[ Video editing for creators, coaches and businesses ]</p>
+                <h1>Send your footage.<br><span class="accent">Get back a post-ready video.</span></h1>
+                <p class="sub">You know your subject. We make people stop and watch it. Upload your raw clips, tell us what you need, and get an edit with cuts, captions, music and color, ready to post.</p>
+                <div class="hero-actions">
+                    <a href="/start/" class="btn btn-primary btn-hero">Send your footage →</a>
+                    <a href="#pricing" class="btn">See pricing</a>
+                </div>
+                <p class="hero-note">No account needed · Fixed quote before we start · Short-form edits from $29</p>
+            </div>
+            <div>
+                <div class="video-frame">
+                    <iframe src="https://www.youtube.com/embed/EC89e9Tff9w?rel=0&modestbranding=1&playsinline=1" title="Sample edit" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section class="block" id="how">
+            <div class="wrap">
+                <div class="section-head">
+                    <p class="meta">[ How it works ]</p>
+                    <h2>Three steps.<br><span class="accent">Your only job is step one.</span></h2>
+                </div>
+                <div class="grid-3">
+                    <div class="card">
+                        <div class="num">01.</div>
+                        <h3>Send your footage</h3>
+                        <p>Fill in a short brief and upload your files straight from your phone or computer. No account, no sign-up.</p>
+                    </div>
+                    <div class="card">
+                        <div class="num">02.</div>
+                        <h3>Approve the quote</h3>
+                        <p>We review what you sent and email a fixed price and delivery date within one business day. Nothing starts until you say yes.</p>
+                    </div>
+                    <div class="card">
+                        <div class="num">03.</div>
+                        <h3>Review and post</h3>
+                        <p>You get the edit, tell us what to change, and download the final file ready for your platform.</p>
+                    </div>
+                </div>
+                <div class="center-cta"><a href="/start/" class="btn btn-primary btn-hero">Send your footage →</a></div>
+            </div>
+        </section>
+
+        <section class="block" id="work">
+            <div class="wrap">
+                <div class="section-head">
+                    <p class="meta">[ Selected work ]</p>
+                    <h2>Recent edits.<br><span class="accent">Real clients.</span></h2>
+                    <p class="intro">Short-form, promo and motion work for educators, hospitality brands and businesses.</p>
+                </div>
+                <div class="reels-grid">
+<article class="reel-card"><div class="reel-media"><iframe loading="lazy" src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F29577794901813049&amp;show_text=0&amp;width=500" title="Dr. Tarindu Facebook Reel 01" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe></div><div class="reel-copy"><span class="reel-kicker">Dr. Tarindu / Facebook Reel</span><h3>Expert-led Social Reel 01</h3><p>Short-form professional content shaped with clear pacing, engaging storytelling and a social-first edit.</p><a class="reel-link" href="https://www.facebook.com/reel/29577794901813049" target="_blank" rel="noopener">Open Facebook Reel ↗</a></div></article>
+<article class="reel-card"><div class="reel-media"><iframe loading="lazy" src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F948878071622062&amp;show_text=0&amp;width=500" title="Dr. Tarindu Facebook Reel 02" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe></div><div class="reel-copy"><span class="reel-kicker">Dr. Tarindu / Facebook Reel</span><h3>Expert-led Social Reel 02</h3><p>A second short-form example highlighting concise messaging, audience engagement and platform-ready presentation.</p><a class="reel-link" href="https://www.facebook.com/reel/948878071622062" target="_blank" rel="noopener">Open Facebook Reel ↗</a></div></article>
+<article class="reel-card"><div class="reel-media"><iframe loading="lazy" src="https://www.tiktok.com/player/v1/7704904885342407956?music_info=1&amp;description=1" title="Dr. Dileepa Educational TikTok Reel" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div><div class="reel-copy"><span class="reel-kicker">Dr. Dileepa / TikTok</span><h3>Expert-led Educational Reel</h3><p>Educational short-form content featuring an expert-led presentation, edited for clarity, attention and mobile viewing.</p><a class="reel-link" href="https://www.tiktok.com/@prof.dr.dileepa/video/7704904885342407956" target="_blank" rel="noopener">Open TikTok Video ↗</a></div></article>
+<article class="reel-card"><div class="reel-media"><iframe loading="lazy" src="https://player.vimeo.com/video/1245677472?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" title="Cafe and Restaurant Promotional Video" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div><div class="reel-copy"><span class="reel-kicker">Hospitality / Promotional Editing</span><h3>Café & Restaurant Promo</h3><p>Food, ambience and venue storytelling designed to make cafés and restaurants stand out on social media.</p><a class="reel-link" href="https://vimeo.com/1245677472" target="_blank" rel="noopener">Watch on Vimeo ↗</a></div></article>
+<article class="reel-card"><div class="reel-media"><iframe loading="lazy" src="https://player.vimeo.com/video/1245677958?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" title="Economics Unit 4 Seminar Promotion" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div><div class="reel-copy"><span class="reel-kicker">Education / Event Marketing</span><h3>Economics Seminar Promo</h3><p>A vertical promotional edit for an Economics Unit 4 seminar, built to communicate the event and encourage registrations.</p><a class="reel-link" href="https://vimeo.com/1245677958" target="_blank" rel="noopener">Watch on Vimeo ↗</a></div></article>
+<article class="reel-card"><div class="reel-media"><iframe loading="lazy" src="https://player.vimeo.com/video/1245678155?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" title="ChatBiz Logo Reveal" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div><div class="reel-copy"><span class="reel-kicker">Motion Graphics / Brand Identity</span><h3>ChatBiz Logo Reveal</h3><p>A polished logo reveal animation designed to introduce a brand with a clean, memorable visual identity.</p><a class="reel-link" href="https://vimeo.com/1245678155" target="_blank" rel="noopener">Watch on Vimeo ↗</a></div></article>
+                </div>
+                <div class="center-cta">
+                    <p class="muted" style="margin:0 0 1.5rem">Want yours to look like this?</p>
+                    <a href="/start/" class="btn btn-primary btn-hero">Send your footage →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="block" id="services">
+            <div class="wrap">
+                <div class="section-head">
+                    <p class="meta">[ What we do ]</p>
+                    <h2>Edits built to hold attention.</h2>
+                </div>
+                <div class="grid-3">
+                    <div class="card">
+                        <div class="num">01.</div>
+                        <h3>Short-form editing</h3>
+                        <p>Reels, Shorts and TikToks from talking-head, product or event footage, with captions and pacing made for mobile.</p>
+                    </div>
+                    <div class="card">
+                        <div class="num">02.</div>
+                        <h3>Long-form and podcasts</h3>
+                        <p>YouTube videos and full podcast episodes cleaned up, tightened and finished with titles, music and color.</p>
+                    </div>
+                    <div class="card">
+                        <div class="num">03.</div>
+                        <h3>Motion and AI visuals</h3>
+                        <p>Animated titles, logo reveals and AI-generated b-roll when your footage needs more to look at.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="block" id="pricing">
+            <div class="wrap">
+                <div class="section-head">
+                    <p class="meta">[ Pricing ]</p>
+                    <h2>Clear prices.<br><span class="accent">A fixed quote before we start.</span></h2>
+                    <p class="intro">All prices in US dollars. These are starting prices; your exact quote depends on the footage and the brief.</p>
+                </div>
+                <div class="price-grid">
+                    <div class="price-card main">
+                        <span class="price-tag">Most popular</span>
+                        <h3>Short-form edit</h3>
+                        <div class="price-now">$29 <small>/ video</small></div>
+                        <p>One video up to 60 seconds, from your footage.</p>
+                        <ul>
+                            <li>Captions and dynamic text</li>
+                            <li>Animations and transitions</li>
+                            <li>Music and sound effects</li>
+                            <li>Color grading</li>
+                        </ul>
+                        <div class="price-extra">Each extra minute: $12</div>
+                    </div>
+                    <div class="price-card">
+                        <span class="price-tag">Edit + AI</span>
+                        <h3>Editing + AI visuals</h3>
+                        <div class="price-now">$59 <small>/ video</small></div>
+                        <p>Your footage plus AI-generated clips or images added to the edit. Up to 60 seconds.</p>
+                    </div>
+                    <div class="price-card">
+                        <span class="price-tag">No footage needed</span>
+                        <h3>Full AI video</h3>
+                        <div class="price-now">$79 <small>/ video</small></div>
+                        <p>No shoot required. Give us the idea and we produce the whole video with AI tools. Up to 60 seconds.</p>
+                    </div>
+                    <div class="price-card">
+                        <span class="price-tag">Long-form</span>
+                        <h3>Podcast episode</h3>
+                        <div class="price-now">$119 <small>/ episode</small></div>
+                        <p>One full episode up to 60 minutes. Short clips cut from the episode are quoted separately.</p>
+                    </div>
+                </div>
+                <div class="price-notes">
+                    <div class="price-note"><b>Posting every week?</b>Monthly packs: 12 short-form edits for <span>$299</span>, or 30 for <span>$649</span>.</div>
+                    <div class="price-note"><b>Need a script or a rush?</b>Script writing is <span>$15</span> per video. 24-hour delivery adds <span>30%</span>.</div>
+                    <div class="price-note"><b>What is included</b>Two rounds of revisions on every edit, and final files sized for your platform.</div>
+                </div>
+                <div class="center-cta"><a href="/start/" class="btn btn-primary btn-hero">Send your footage →</a></div>
+            </div>
+        </section>
+
+        <section class="block" id="faq">
+            <div class="wrap">
+                <div class="section-head">
+                    <p class="meta">[ Questions ]</p>
+                    <h2>Before you send.</h2>
+                </div>
+                <div class="faq">
+                    <details>
+                        <summary>How do I send large files?</summary>
+                        <p>The upload page takes files up to 1 GB each and 10 GB per project, straight from your browser. If your footage is already on Google Drive, Dropbox or Frame.io, paste the link instead.</p>
+                    </details>
+                    <details>
+                        <summary>How fast is delivery?</summary>
+                        <p>Standard delivery is 3 to 5 days from the moment you approve the quote. 48-hour and 24-hour options are available when you need it sooner.</p>
+                    </details>
+                    <details>
+                        <summary>When do I pay?</summary>
+                        <p>Nothing is charged for sending footage or getting a quote. Payment details and terms come with your quote, and work starts once you approve it.</p>
+                    </details>
+                    <details>
+                        <summary>Is my footage kept private?</summary>
+                        <p>Yes. Files go directly into our private storage and are only opened by our editing team. We do not publish client work without permission.</p>
+                    </details>
+                    <details>
+                        <summary>Where are you based?</summary>
+                        <p>Our editors are in Sri Lanka (GMT+5:30) and work with clients worldwide in English. Send footage at the end of your day and it is in our queue by our morning.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="final" id="contact">
+            <h2>Have footage?<br><span class="accent">Send it now.</span></h2>
+            <p>Upload what you shot, exactly as it is. We will take it from there and come back with a fixed quote.</p>
+            <a href="/start/" class="btn btn-primary btn-hero">Send your footage →</a>
+            <span class="alt">Prefer to ask first? <a href="mailto:banukakannangara@gmail.com">Email us</a> or <a href="https://wa.me/94767794670?text=Hi%20BK%20Video%20Edit%2C%20I%27d%20like%20to%20ask%20about%20a%20video%20project." target="_blank" rel="noopener noreferrer">message us on WhatsApp</a>.</span>
+        </section>
+    </main>
+
+    <footer class="site">
+        <div class="footer-inner">
+            <span>&copy; 2026 Banuka Kannangara (Pvt) Ltd · Trading as BK Video Edit</span>
+            <div class="footer-links">
+                <a href="/start/">Send footage</a>
+                <a href="/privacy/">Privacy</a>
+                <a href="#home">Back to top ↑</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
