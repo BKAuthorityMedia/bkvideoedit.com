@@ -136,6 +136,25 @@
         }
     </style>
 
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1690105982699755');
+    fbq('track', 'PageView');
+    </script>
+    <!-- End Meta Pixel Code -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta name="theme-color" content="#0B0B0B">
 </head>
 <body>
     <header class="site-header">
@@ -704,6 +723,7 @@
             if (warn.length) { $('doneWarn').hidden = false; $('doneWarn').textContent = warn.join('\n\n'); }
             $('doneWa').href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(
                 'Hi BK Video Edit, I just sent a project through your website. Name: ' + v('name') + (v('company') ? ' (' + v('company') + ')' : '') + '.');
+            try { if (window.fbq) fbq('track', 'Lead'); } catch (ignore) {}
             show('view-done');
         });
 
