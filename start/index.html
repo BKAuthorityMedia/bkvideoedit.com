@@ -154,6 +154,13 @@
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '1690105982699755');
     fbq('track', 'PageView');
+    // Count WhatsApp button clicks as leads. The WhatsApp button shown after a
+    // finished "Send footage" form (#doneWa) is skipped: that form already sent a Lead.
+    document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[href*="wa.me/"], a[href*="api.whatsapp.com"]');
+        if (!a || a.id === 'doneWa') return;
+        try { if (window.fbq) fbq('track', 'Lead', { content_name: 'WhatsApp click' }); } catch (ignore) {}
+    }, true);
     </script>
     <!-- End Meta Pixel Code -->
     <link rel="icon" href="/favicon.ico" sizes="any">
@@ -809,7 +816,7 @@
             if (warn.length) { $('doneWarn').hidden = false; $('doneWarn').textContent = warn.join('\n\n'); }
             $('doneWa').href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(
                 'Hi BK Video Edit, I just sent a project through your website. Name: ' + v('name') + (v('company') ? ' (' + v('company') + ')' : '') + '.');
-            try { if (window.fbq) fbq('track', 'Lead'); } catch (ignore) {}
+            try { if (window.fbq) fbq('track', 'Lead', { content_name: 'Send footage' }); } catch (ignore) {}
             show('view-done');
         });
 
